@@ -4,6 +4,7 @@ import pytest
 request_utility = requestsUtilities()
 
 @pytest.mark.tcid06
+@pytest.mark.register
 @pytest.mark.test_register_successfull
 def test_register_successfull():
     rs_api = request_utility.post('/api/register', payload={"email": "eve.holt@reqres.in","password": "pistol"})
@@ -12,6 +13,7 @@ def test_register_successfull():
 
 
 @pytest.mark.tcid07
+@pytest.mark.register
 @pytest.mark.test_register_unsuccessfull
 def test_register_unsuccessfull():
     rs_api = request_utility.post('/api/register', payload={"email": "sydney@fife"})
