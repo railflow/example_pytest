@@ -21,7 +21,7 @@ def test_single_user():
 @pytest.mark.users
 @pytest.mark.user_not_found
 def test_user_not_found():
-    request_utility.get('/api/users/23',expected_status_code=404)
+    request_utility.get('/api/users/23',expected_status_code=400)
 
 @pytest.mark.tcid04
 @pytest.mark.users

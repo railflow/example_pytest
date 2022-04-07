@@ -10,7 +10,7 @@ class requestsUtilities(object):
     def assert_status_code(self):
         assert self.status_code == self.expected_status_code, f'Bad Status code.'\
             f"Expected{self.expected_status_code}, Actual status code: {self.status_code},"\
-            f"URL: {self.url}, Response Json: {self.rs_json}"
+            f"URL: {self.url}"
 
     def post(self, endpoint , payload = None, headers= None, expected_status_code=200):
         if not headers:
@@ -34,12 +34,14 @@ class requestsUtilities(object):
         rs_api = requests.get(self.url, data=json.dumps(payload), headers=headers)
         self.status_code = rs_api.status_code
         self.expected_status_code = expected_status_code
-        self.rs_json = rs_api.json()
+        
         self.assert_status_code()
-
-        logger.debug(f"API Get response:{self.rs_json} ")
-
-        return self.rs_json
+        if self.status_code == 400:
+            pass
+        else:   
+            self.rs_json = rs_api.json()
+            logger.debug(f"API Get response:{self.rs_json} ")
+            return self.rs_json
 
 
     def put(self, endpoint, payload , headers = None, expected_status_code = 200):
