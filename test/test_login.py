@@ -16,5 +16,4 @@ def test_login_successfull():
 @pytest.mark.login
 @pytest.mark.test_login_unsuccessfull
 def test_login_unsuccessfull():
-    rs_api = request_utility.post('/api/register', payload={"email": "peter@klaven"})
-    assert rs_api['id']
+    rs_api = request_utility.post('/api/register', payload={"email": "peter@klaven"}, expected_status_code=400)
