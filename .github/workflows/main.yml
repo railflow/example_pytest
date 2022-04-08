@@ -120,9 +120,11 @@ jobs:
       - name: List build download dir
         run: |
           ls /usr/railflow
-          ls /usr/railflow/login_results
-          ls /usr/railflow/login_results/test-reports
+          mv /usr/railflow/login_results/login_results.json /usr/railflow
+          mv /usr/railflow/users_results/users_results.json /usr/railflow
+          mv /usr/railflow/resource_results/resource_results.json /usr/railflow
+          mv /usr/railflow/register_results/register_results.json /usr/railflow
 
       # Runs a single command using the runners shell
       - name: Run railflow testing
-        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/index.php?/projects/overview/29 -u manishsaini74.ms@gmail.com -p password123 -pr "GitHub-Demo" -path Demo/Pytest -f PyTest-Railflow -r /usr/railflow/test-reports/*.json -sm path -tp APIDemoTest
+        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/index.php?/projects/overview/29 -u manishsaini74.ms@gmail.com -p password123 -pr "GitHub-Demo" -path Demo/Pytest -f PyTest-Railflow -r /usr/railflow/*.json -sm path -tp APIDemoTest
