@@ -23,11 +23,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest -v -m login --junitxml=test-reports/login_results.xml
+        pytest -v -m login --jsonfile test-reports/login_results.json
     - uses: actions/upload-artifact@v2
       with:
         name: login_results
-        path: test-reports/login_results.xml
+        path: test-reports/login_results.json
       if: ${{ always() }}
 
 
@@ -47,11 +47,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest -v -m register --junitxml=test-reports/register_results.xml
+        pytest -v -m register --jsonfile test-reports/register_results.json
     - uses: actions/upload-artifact@v2
       with:
         name: register_results
-        path: test-reports/register_results.xml
+        path: test-reports/register_results.json
       if: ${{ always() }}
 
   test_users:
@@ -70,11 +70,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest -v -m users --junitxml=test-reports/users_results.xml
+        pytest -v -m users --jsonfile test-reports/users_results.json
     - uses: actions/upload-artifact@v2
       with:
         name: users_results
-        path: test-reports/users_results.xml
+        path: test-reports/users_results.json
       if: ${{ always() }}
       
   test_resource:
@@ -93,11 +93,11 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: |
-        pytest -v -m resource --junitxml=test-reports/resource_results.xml
+        pytest -v -m resource --jsonfile test-reports/resource_results.json
     - uses: actions/upload-artifact@v2
       with:
         name: resource_results
-        path: test-reports/resource_results.xml
+        path: test-reports/resource_results.json
       if: ${{ always() }}
 
   
