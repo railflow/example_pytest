@@ -21,6 +21,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        mkdir test-reports
     - name: Test with pytest
       run: |
         pytest -v -m login --jsonfile test-reports/login_results.json
@@ -45,6 +46,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        mkdir test-reports
     - name: Test with pytest
       run: |
         pytest -v -m register --jsonfile test-reports/register_results.json
@@ -68,6 +70,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        mkdir test-reports
     - name: Test with pytest
       run: |
         pytest -v -m users --jsonfile test-reports/users_results.json
@@ -91,6 +94,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        mkdir test-reports
     - name: Test with pytest
       run: |
         pytest -v -m resource --jsonfile test-reports/resource_results.json
