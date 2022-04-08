@@ -78,3 +78,23 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v -m resource --junitxml=test-reports/register_results.xml
+  
+  railflow-test:
+    runs-on: ubuntu-latest
+    container: railflow/railflow:latest
+    defaults:
+      run:
+        working-directory: /usr/railflow
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: pytest
+          path: /usr/railflow
+      - name: List build download dir
+        run: ls /usr/railflow
+
+      # Runs a single command using the runners shell
+      - name: Run railflow testing
+        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/index.php?/projects/overview/29 -u manishsaini74.ms@gmail.com -p password123 -pr "GitHub-Demo" -path Demo/Pytest -f PyTest-Railflow -r /usr/railflow/test-reports/*.xml -sm path -tp APIDemoTest
