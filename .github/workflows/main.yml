@@ -25,10 +25,10 @@ jobs:
       run: |
         pytest -v -m login --junitxml=test-reports/login_results.xml
     - uses: actions/upload-artifact@v2
-        with:
-          name: login_results
-          path: test-reports/login_results.xml
-        if: ${{ always() }}
+      with:
+        name: login_results
+        path: test-reports/login_results.xml
+      if: ${{ always() }}
 
 
   test_register:
@@ -49,10 +49,10 @@ jobs:
       run: |
         pytest -v -m register --junitxml=test-reports/register_results.xml
     - uses: actions/upload-artifact@v2
-        with:
-          name: register_results
-          path: test-reports/register_results.xml
-        if: ${{ always() }}
+      with:
+        name: register_results
+        path: test-reports/register_results.xml
+      if: ${{ always() }}
 
   test_users:
     runs-on: ubuntu-latest
@@ -72,10 +72,10 @@ jobs:
       run: |
         pytest -v -m users --junitxml=test-reports/users_results.xml
     - uses: actions/upload-artifact@v2
-        with:
-          name: users_results
-          path: test-reports/users_results.xml
-        if: ${{ always() }}
+      with:
+        name: users_results
+        path: test-reports/users_results.xml
+      if: ${{ always() }}
       
   test_resource:
     runs-on: ubuntu-latest
@@ -95,10 +95,10 @@ jobs:
       run: |
         pytest -v -m resource --junitxml=test-reports/resource_results.xml
     - uses: actions/upload-artifact@v2
-        with:
-          name: resource_results
-          path: test-reports/resource_results.xml
-        if: ${{ always() }}
+      with:
+        name: resource_results
+        path: test-reports/resource_results.xml
+      if: ${{ always() }}
 
   
   railflow-test:
