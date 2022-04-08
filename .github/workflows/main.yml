@@ -24,11 +24,11 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m login --jsonfile test-reports/login_results.json
+        pytest -v -m login --junitxml=test-reports/login_results.xml
     - uses: actions/upload-artifact@v2
       with:
         name: login_results
-        path: test-reports/login_results.json
+        path: test-reports/login_results.xml
       if: ${{ always() }}
 
 
@@ -49,11 +49,11 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m register --jsonfile test-reports/register_results.json
+        pytest -v -m register --junitxml=test-reports/register_results.xml
     - uses: actions/upload-artifact@v2
       with:
         name: register_results
-        path: test-reports/register_results.json
+        path: test-reports/register_results.xml
       if: ${{ always() }}
 
   test_users:
@@ -73,11 +73,11 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m users --jsonfile test-reports/users_results.json
+        pytest -v -m users --junitxml=test-reports/users_results.xml
     - uses: actions/upload-artifact@v2
       with:
         name: users_results
-        path: test-reports/users_results.json
+        path: test-reports/users_results.xml
       if: ${{ always() }}
       
   test_resource:
@@ -97,11 +97,11 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m resource --jsonfile test-reports/resource_results.json
+        pytest -v -m resource --junitxml=test-reports/resource_results.xml
     - uses: actions/upload-artifact@v2
       with:
         name: resource_results
-        path: test-reports/resource_results.json
+        path: test-reports/resource_results.xml
       if: ${{ always() }}
 
   
@@ -120,11 +120,11 @@ jobs:
       - name: List build download dir
         run: |
           ls /usr/railflow
-          mv /usr/railflow/login_results/login_results.json /usr/railflow
-          mv /usr/railflow/users_results/users_results.json /usr/railflow
-          mv /usr/railflow/resource_results/resource_results.json /usr/railflow
-          mv /usr/railflow/register_results/register_results.json /usr/railflow
+          mv /usr/railflow/login_results/login_results.xml /usr/railflow
+          mv /usr/railflow/users_results/users_results.xml /usr/railflow
+          mv /usr/railflow/resource_results/resource_results.xml /usr/railflow
+          mv /usr/railflow/register_results/register_results.xml /usr/railflow
 
       # Runs a single command using the runners shell
       - name: Run railflow testing
-        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/index.php?/projects/overview/29 -u manishsaini74.ms@gmail.com -p password123 -pr "GitHub-Demo" -path Demo/Pytest -f PyTest-Railflow -r /usr/railflow/*.json -sm path -tp APIDemoTest
+        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/index.php?/projects/overview/29 -u manishsaini74.ms@gmail.com -p password123 -pr "GitHub-Demo" -path Demo/Pytest -f JUnit -r /usr/railflow/*.xml -sm path -tp APIDemoTest
