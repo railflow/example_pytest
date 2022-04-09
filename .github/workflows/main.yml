@@ -108,6 +108,7 @@ jobs:
   railflow-test:
     runs-on: ubuntu-latest
     container: railflow/railflow:latest
+    needs: [test_login, test_resource, test_users, test_register]
     defaults:
       run:
         working-directory: /usr/railflow
