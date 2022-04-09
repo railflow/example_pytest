@@ -24,7 +24,7 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m login --junitxml=test-reports/login_results.xml
+        pytest -v -m login --junitxml=test-reports/login_results.xml -o junit_suite_name=login
     - uses: actions/upload-artifact@v2
       with:
         name: login_results
@@ -49,7 +49,7 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m register --junitxml=test-reports/register_results.xml
+        pytest -v -m register --junitxml=test-reports/register_results.xml -o junit_suite_name=register
     - uses: actions/upload-artifact@v2
       with:
         name: register_results
@@ -73,7 +73,7 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m users --junitxml=test-reports/users_results.xml
+        pytest -v -m users --junitxml=test-reports/users_results.xml -o junit_suite_name=user
     - uses: actions/upload-artifact@v2
       with:
         name: users_results
@@ -97,7 +97,7 @@ jobs:
         mkdir test-reports
     - name: Test with pytest
       run: |
-        pytest -v -m resource --junitxml=test-reports/resource_results.xml
+        pytest -v -m resource --junitxml=test-reports/resource_results.xml -o junit_suite_name=resource
     - uses: actions/upload-artifact@v2
       with:
         name: resource_results
@@ -127,4 +127,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run railflow testing
-        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/ -u manishsaini74.ms@gmail.com -p password123 -pr "Sample Web App" -path Demo/APITest -f JUnit -r /usr/railflow/*.xml -sm path -tp APIDemoTest
+        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/ -u manishsaini74.ms@gmail.com -p password123 -pr "Sample Web App" -path APITest -f JUnit -r /usr/railflow/*.xml -sm path -tp Demo
