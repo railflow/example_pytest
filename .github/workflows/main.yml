@@ -127,4 +127,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run railflow testing
-        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/ -u manishsaini74.ms@gmail.com -p password123 -pr "Sample Web App" -path Demo/Pytest -f JUnit -r /usr/railflow/*.xml -sm path -tp APIDemoTest
+        run: npx railflow -k LJLPF-WOJFR-CIXFG-BLJEW -url https://testrail7.railflow.io/ -u manishsaini74.ms@gmail.com -p password123 -pr "Sample Web App" -path Demo/APITest -f JUnit -r /usr/railflow/*.xml -sm path -tp APIDemoTest
