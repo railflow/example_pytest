@@ -1,16 +1,15 @@
 from src.utilities.requestUtilities import requestsUtilities
 import pytest
 
+request_utility = requestsUtilities()
+
 
 class TestResource:
-    def __init__(self):
-        self.request_utility = requestsUtilities()
-
     @pytest.mark.tcid10
     @pytest.mark.resource
     @pytest.mark.test_list_resources
     def test_list_resources(self):
-        rs_api = self.request_utility.get('/api/unknown')
+        rs_api = request_utility.get('/api/unknown')
         assert rs_api['page']
 
 
@@ -18,7 +17,7 @@ class TestResource:
     @pytest.mark.resource
     @pytest.mark.test_list_single_resource
     def test_list_single_resources(self):
-        rs_api = self.request_utility.get('/api/unknown/2')
+        rs_api = request_utility.get('/api/unknown/2')
         assert rs_api['data']
 
 
@@ -26,4 +25,4 @@ class TestResource:
     @pytest.mark.resource
     @pytest.mark.test_resource_not_found
     def test_resource_not_found(self):
-        rs_api = self.request_utility.get('/api/unknown/23')
+        rs_api = request_utility.get('/api/unknown/23')
